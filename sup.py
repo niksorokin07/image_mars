@@ -1,4 +1,4 @@
-from flask import Flask, url_for
+from flask import Flask, url_for, request
 
 app = Flask(__name__)
 
@@ -36,10 +36,24 @@ def image_mars():
                     <title>Привет, Марс!</title>
                   </head>
                   <body>
+                  <link rel="stylesheet" 
+                    href="{url_for('static', filename='style/style.css')}">
                     <h1>Жди нас, Марс!</h1>
-                    <img src={url_for('static', filename='mars.png')} alt="no img">
-                    <div class="alert alert-primary" role="alert">
-                      Вот она какая, красная планета!
+                    <img src={url_for('static', filename='img/mars.png')} alt="no img">
+                    <div class="alert alert-dark" role="alert">
+                        Человечество вырастает из детства.
+                    </div>
+                    <div class="alert alert-success" role="alert">
+                        Человечеству мала одна планета.
+                    </div>
+                    <div class="alert alert-secondary" role="alert">
+                        Мы сделаем обитаемыми безжизненные пока планеты.
+                    </div>
+                    <div class="alert alert-warning" role="alert">
+                        И начнем с Марса!
+                    </div>
+                    <div class="alert alert-danger" role="alert">
+                        Присоединяйся!
                     </div>
                   </body>
                 </html>'''
