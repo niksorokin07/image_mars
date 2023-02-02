@@ -22,7 +22,7 @@ def promotion():
             <h1>Присоединяйся!</h1>"""
 
 
-@app.route('/image_mars')
+@app.route('/promotion_image')
 def image_mars():
     return f'''<!doctype html>
                 <html lang="en">
