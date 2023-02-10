@@ -71,36 +71,26 @@ def form_sample():
                             href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
                             integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
                             crossorigin="anonymous">
-                            <link rel="stylesheet" type="text/css" href="{url_for('static', filename='style/style1.css')}"/>
+                            <link rel="stylesheet" type="text/css" href="{url_for('static', filename='css/style.css')}" />
                             <title>Пример формы</title>
                           </head>
                           <body>
                             <h1>Форма для регистрации в суперсекретной системе</h1>
                             <div>
                                 <form class="login_form" method="post">
-                                    <input type="name" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Введите имя" name="name">
-                                    <input type="surname" class="form-control" id="password" placeholder="Введите фамилию" name="surname">
-                                    <br>
-                                    <input type="email" class="form-control" id="password" placeholder="Введите адрес почты" name="email">
+                                    <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Введите фамилию" name="email">
+                                    <input type="password" class="form-control" id="password" placeholder="Введите имя" name="password">
+                                    <input type="password" class="form-control" id="password" placeholder="Введите адрес почты" name="password">
                                     <div class="form-group">
-                                        <label for="classSelect">Какое у вас образование?</label>
+                                        <label for="classSelect">Какое у вас обраование?</label>
                                         <select class="form-control" id="classSelect" name="class">
-                                          <option>Начальное</option>
-                                          <option>Общее</option>
-                                          <option>Среднее</option>
-                                          <option>Высшее</option>
+                                          <option>нет</option>
+                                          <option>среднее</option>
+                                          <option>высшее</option>
                                         </select>
                                      </div>
                                     <div class="form-group">
-                                        <label for="form-check">Какие у вас есть профессии</label>
-                                        
-                                    <div class="form-check">
-                                        <input type="checkbox" class="form-check-input" id="acceptRules" name="accept">
-                                        <label class="form-check-label" for="acceptRules">Готов быть добровольцем</label>
-                                    </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="about">Немного о себе</label>
+                                        <label for="about">почему вы хотите полететь?</label>
                                         <textarea class="form-control" id="about" rows="3" name="about"></textarea>
                                     </div>
                                     <div class="form-group">
@@ -122,24 +112,28 @@ def form_sample():
                                           </label>
                                         </div>
                                     </div>
+                                     <label for="form-group form-check">Укажите работу</label>
                                     <div class="form-group form-check">
                                         <input type="checkbox" class="form-check-input" id="acceptRules" name="accept">
-                                        <label class="form-check-label" for="acceptRules">Готов быть добровольцем</label>
+                                        <label class="form-check-label" for="acceptRules">врач</label>
                                     </div>
-                                    <button type="submit" class="btn btn-primary">Отправить</button>
+                                     <div class="form-group form-check">
+                                        <input type="checkbox" class="form-check-input" id="acceptRules" name="accept">
+                                        <label class="form-check-label" for="acceptRules">инженер-исследователь</label>
+                                    </div>
+                                      <div class="form-group">
+                                        <label for="photo">Приложите фотографию</label>
+                                        <input type="file" class="form-control-file" id="photo" name="file">
+                                    </div>
+                                     <div class="туц">
+                                        <input type="checkbox" class="ready?" id="acceptRules" name="accept">
+                                        <label class="form-check-label" for="acceptRules">готовы ли вы остаться на марсе?</label>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Записаться</button>
                                 </form>
                             </div>
                           </body>
                         </html>'''
-    elif request.method == 'POST':
-        print(request.form['email'])
-        print(request.form['password'])
-        print(request.form['class'])
-        print(request.form['file'])
-        print(request.form['about'])
-        print(request.form['accept'])
-        print(request.form['sex'])
-        return "Форма отправлена"
 
 
 if __name__ == '__main__':
