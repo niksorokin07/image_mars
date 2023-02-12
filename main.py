@@ -4,7 +4,7 @@ app = Flask(__name__)
 
 
 @app.route('/')
-def printt():
+def print():
     return "Миссия Колонизация Марса"
 
 
@@ -143,6 +143,44 @@ def form_sample():
         print(request.form['accept'])
         print(request.form['sex'])
         return "Форма отправлена"
+
+
+@app.route('/choice/<planetname>')
+def choice(planetname):
+    if request.method == 'GET':
+        return f'''
+                    <html lang="en">
+                      <head>
+                        <meta charset="utf-8">
+                        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+                        <link rel="stylesheet" 
+                        href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" 
+                        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" 
+                        crossorigin="anonymous">
+                        <title>Реклама {planetname}!</title>
+                      </head>
+                      <body>
+                       <meta charset="utf-8">
+                    <link rel="stylesheet" type="text/css" href="{url_for('static', filename='style/style.css')}" />
+                    <h1>Моё предложение: {planetname}</h1>
+                        <div class="alert alert-primary" role="alert">
+                         {planetname} ближе к Земле;
+                        </div>
+                        <div class="alert alert-success" role="alert">
+                          На этой планете много необходимых ресурсов;
+                        </div>
+                        <div class="alert alert-danger" role="alert">
+                          На ней есть вода и атмосфера;
+                        </div>
+                        <div class="alert alert-info" role="alert">
+                          На ней есть большое магнитное поле;
+                        </div>
+                        <div class="alert alert-dark" role="alert">
+                          Наконец, она просто красива!
+                        </div>
+                      </body>
+                    </html>
+                   '''
 
 
 if __name__ == '__main__':
