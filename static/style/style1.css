@@ -1,3 +1,13 @@
+h1 {
+   color: #000000;
+   margin-left: 470px;
+   margin-right: 450px;
+}
+h2 {
+   color: #000000;
+   margin-left: 450px;
+   margin-right: 450px;
+}
 form.login_form {
     margin-left: auto;
     margin-right: auto;

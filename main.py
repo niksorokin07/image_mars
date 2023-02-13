@@ -4,7 +4,7 @@ app = Flask(__name__)
 
 
 @app.route('/')
-def print():
+def printt():
     return "Миссия Колонизация Марса"
 
 
@@ -199,7 +199,7 @@ def results(nickname, level, rating):
                       </head>
                       <body>
                        <meta charset="utf-8">
-                    <link rel="stylesheet" type="text/css" href="{url_for('static', filename='style/style.css')}" />
+                    <link rel="stylesheet" type="text/css" href="{url_for('static', filename='style/style2.css')}" />
                     <h1>Результаты отбора</h1>
                         <div class="alert alert-primary" role="alert">
                         Претиндент на участие в миссии {nickname}
@@ -217,6 +217,123 @@ def results(nickname, level, rating):
                       </body>
                     </html>
                    '''
+
+
+@app.route('/load_photo', methods=['GET'])
+def load_photo():
+    if request.method == 'GET':
+        f = request.files['file']
+        return f'''<!doctype html>
+                        <html lang="en">
+                          <head>
+                            <meta charset="utf-8">
+                            <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+                             <link rel="stylesheet"
+                                href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+                                integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+                                crossorigin="anonymous">
+                                <link rel="stylesheet" type="text/css" href="{url_for('static', filename='style/style1.css')}" />
+                            <title>Пример загрузки файла</title>
+                            <script type="text/javascript" src="{url_for('static', filename='js/js.js')}"></script>
+                          </head>
+                          <body>
+                            <h1>Загрузка файла</h1>
+                            <br>
+                            <h2>для участия в миссии</h2>
+                            <form class="login_form" method="post">
+                                 <div class="form-group">
+                                            <label for="photo">Приложите фотографию</label>
+                                            <br>
+                                            <img id="frame" src="" class="img-fluid" />
+                                            <br>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Отправить</button>
+                            </form>
+                        </body>
+                        </html>'''
+
+
+@app.route('/carousel')
+def carousel():
+    return f'''<!doctype html>
+                <html lang="en">
+                  <head>
+                    <meta charset="utf-8">
+                    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+                    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+                    <link rel="stylesheet" type="text/css" href="{url_for('static', filename='/style/style.css')}" />
+                    <title>Пейзажи Марса</title>
+                </head>
+                <body>
+                <h1>Пейзажи Марса</h1>
+                <div class="container">
+                  <br>
+                  <br>
+                  <div id="C" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                      <li data-target="#C" data-slide-to="1" class="active"></li>
+                      <li data-target="#C" data-slide-to="2"></li>
+                      <li data-target="#C" data-slide-to="3"></li>
+                      <li data-target="#C" data-slide-to="4"></li>
+                    </ol>
+                    <div class="carousel-inner" role="listbox">
+                      <div class="item active">
+                        <img src="{url_for('static', filename='img/mars1.jpg')}" alt="First Slide">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h4>Железный пейзаж</h4>
+                                <p>Сверхчеткие снимки показывают нам сухой, скалистый рельеф,
+                                 покрытый мелкой красной пылью.
+                                    Красная пыль, на самом деле, - это оксид железа. Все, начиная от
+                                 земли до маленьких камней и скал, покрыто этой пылью.
+                                </p>
+                            </div>
+                      </div>
+                      <div class="item">
+                        <img src="{url_for('static', filename='img/mars2.jpg')}" alt="Second Slide">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h4>Геологическая стабильность</h4>
+                                <p>Так как на Марсе нет ни воды, ни подтвержденной тектонической
+                                 активности, его геологические особенности остаются практически
+                                 неизменными. По сравнению с поверхностью Земли, которая
+                                 испытывает постоянные изменения, связанные с водной эрозией и
+                                 тектонической активностью.
+                                </p>
+                            </div>
+                      </div>
+                      <div class="item">
+                        <img class="d-block w-100" src="{url_for('static', filename='img/mars3.jpg')}" alt="Third Slide">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h4>Скалистые ландшафты</h4>
+                            <p>Ландшафт Марса состоит из разнообразных геологических структур.
+                             Он является домом для самых высоких гор, известных во всей Солнечной системе.
+                            </p>
+                        </div>
+                      </div>
+                      <div class="item">
+                        <img class="d-block w-100" src="{url_for('static', filename='img/mars4.jpg')}" alt="Fourth Slide">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h4>Карьеры</h4>
+                            <p>По мимо гор, на Марсе также много карьеров. Наиболее известный каньон
+                             в Солнечной системе, это Долина Маринера, также находящаяся на
+                             поверхности Красной планеты.
+                            </p>
+                        </div>
+                      </div>
+                    </div>
+                    <a class="left carousel-control" href="#C" role="button" data-slide="prev">
+                      <span class="glyphicon glyphicon-chevron-left" aria-hidden="false"></span>
+                      <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#C" role="button" data-slide="next">
+                      <span class="glyphicon glyphicon-chevron-right" aria-hidden="false"></span>
+                      <span class="sr-only">Next</span>
+                    </a>
+                  </div>
+                </div>
+                </body>
+                </html>
+                '''
 
 
 if __name__ == '__main__':
